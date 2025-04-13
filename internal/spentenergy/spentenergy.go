@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-var ErrData = errors.New("error in transmitted data ")
+var ErrNull = errors.New("error: steps, duration, height, weight cannot be less than or equal to 0")
 
 // Основные константы, необходимые для расчетов.
 const (
@@ -18,7 +18,7 @@ const (
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// TODO: реализовать функцию
 	if steps <= 0 || duration <= 0 || height <= 0 || weight <= 0 {
-		return 0, ErrData
+		return 0, ErrNull
 	}
 	meanSpeed := MeanSpeed(steps, height, duration)
 	durationMinutes := duration.Minutes()
@@ -30,7 +30,7 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// TODO: реализовать функцию
 	if steps <= 0 || duration <= 0 || height <= 0 || weight <= 0 {
-		return 0, ErrData
+		return 0, ErrNull
 	}
 	meanSpeed := MeanSpeed(steps, height, duration)
 	durationMinutes := duration.Minutes()

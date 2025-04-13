@@ -2,8 +2,6 @@ package actioninfo
 
 import (
 	"fmt"
-
-	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
 
 type DataParser interface {
@@ -17,13 +15,13 @@ func Info(dataset []string, dp DataParser) {
 	for _, v := range dataset {
 		err := dp.Parse(v)
 		if err != nil {
-			fmt.Println(spentenergy.ErrData)
+			fmt.Println("error in Parsing:", err)
 			continue
 		}
 
 		ai, err := dp.ActionInfo()
 		if err != nil {
-			fmt.Println(spentenergy.ErrData)
+			fmt.Println("error in forming the activity line:", err)
 			continue
 		}
 		fmt.Println(ai)
